@@ -20,9 +20,9 @@ export default function CalendarLegend() {
 
 
         <img
-          src="/logo.png"
+          src="/tuf_footer.png"
           alt="Logo"
-          style={{ height: '24px', marginLeft: 'auto', opacity: 0.75 }}
+          style={{ height: '32px', marginLeft: 'auto' }}
         />
     </footer>
   );
