@@ -53,7 +53,7 @@ export default function DateNoteModal({
               <div className="modal__subtitle">🗓 {holiday}</div>
             )}
             {!holiday && (
-              <div className="modal__subtitle">Double-click any day to add notes</div>
+              <div className="modal__subtitle">Note down important tasks for the day!</div>
             )}
           </div>
           <button

@@ -39,8 +39,9 @@ export default function CalendarHero({ year, month }) {
 
         {/* Blue wave */}
         
+        
         <path
-          d="M0 80 L0 40 Q220 0 450 28 Q680 56 900 18 L900 80 Z"
+          d="M0 80 L0 40 Q220 0 450 28 Q680 56 900 8 L900 80 Z"
           fill="#4a9ae4"
         />
 

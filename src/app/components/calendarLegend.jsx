@@ -17,6 +17,13 @@ export default function CalendarLegend() {
           <span>{label}</span>
         </div>
       ))}
+
+
+        <img
+          src="/logo.png"
+          alt="Logo"
+          style={{ height: '24px', marginLeft: 'auto', opacity: 0.75 }}
+        />
     </footer>
   );
 }

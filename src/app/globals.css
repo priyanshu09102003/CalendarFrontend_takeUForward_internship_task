@@ -364,7 +364,7 @@
 .note-item__action-btn.del          { color: #ef4444; }
 
 .notes-panel__add-btn {
-  margin-top: 0;
+  margin-top: 8px;
   font-size: 15px;
   color: var(--blue-dark);
   background: transparent;

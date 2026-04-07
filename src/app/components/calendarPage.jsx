@@ -9,6 +9,7 @@ import CalendarHero from './calendarHero';
 import NotesPanel from './notesPanel';
 import CalendarGrid from './calendarGrid';
 import CalendarLegend from './calendarLegend';
+import DateNoteModal from './dateNoteModal';
 
 
 export default function CalendarPage() {
@@ -96,6 +97,19 @@ export default function CalendarPage() {
           <CalendarLegend />
 
           {/* ADDITIONAL - Adding modal that will open on double click to set notes/events for each day */}
+
+           {modalDateKey && (
+            <DateNoteModal
+                dateKey={modalDateKey}
+                notes={dateNotes.getDateNotes(modalDateKey)}
+                onAdd={dateNotes.addDateNote}
+                onUpdate={dateNotes.updateDateNote}
+                onToggleImportant={dateNotes.toggleDateNoteImportant}
+                onToggleDone={dateNotes.toggleDateNoteDone}
+                onDelete={dateNotes.deleteDateNote}
+                onClose={closeModal}
+            />
+            )}
         </div>
       </div>
 
