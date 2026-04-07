@@ -18,7 +18,6 @@ export function useCalendarState(){
         if (isFlipping) return;
         setFlipDir(dir);
         setIsFlipping(true);
-        playFlipSound();
     
         setTimeout(() => {
         setMonth((m) => {
