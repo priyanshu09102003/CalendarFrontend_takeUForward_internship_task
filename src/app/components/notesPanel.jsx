@@ -66,7 +66,7 @@ function NoteItem({ note, onUpdate, onToggleImportant, onToggleDone, onDelete })
         aria-label="Note text"
       />
 
-      {/* Action buttons – visible on hover via CSS */}
+      {/* Action buttons */}
       <div className="note-item__actions" role="group" aria-label="Note actions">
         <button
           className={`note-item__action-btn${note.important ? ' is-important' : ''}`}

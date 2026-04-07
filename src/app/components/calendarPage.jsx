@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { getRingCount } from '../utils/constants';
 import '../globals.css';
 import { useCalendarState } from '../hooks/useCalendarState';
 import CalendarNav  from './calendarNav';
 import CalendarHero from './calendarHero';
 import NotesPanel from './notesPanel';
+import CalendarGrid from './calendarGrid';
 
 
 export default function CalendarPage() {
@@ -22,10 +23,17 @@ export default function CalendarPage() {
     const { year, month, goNext, goPrev } = navigation;  
     const { isFlipping, flipDir } = animation;
     const { startKey, endKey, selectDay, clearRange } = range;
+    const { todayKey, daysInMonth, firstDOW, prevMonthLen } = computed;
 
     const flipClass = isFlipping ? `flip-out-${flipDir}` : '';
     const cardClass = ['cal-card'].join(' ');
     const wrapperFlipClass = ['cal-flip-wrapper', flipClass].filter(Boolean).join(' ');
+
+
+    // Open the modal for each date to take notes there or mark important stuffs
+    const [modalDateKey, setModalDateKey] = useState(null);
+    const openModal  = useCallback((key) => setModalDateKey(key), []);
+    const closeModal = useCallback(() => setModalDateKey(null), []);
 
 
     const [ringCount, setRingCount] = useState(getRingCount());
@@ -64,6 +72,21 @@ export default function CalendarPage() {
                 startKey={startKey}
                 endKey={endKey}
                 onClearRange={clearRange}
+            />
+
+            {/* Main body of the calendar to show the grid of dates and handle their states */}
+            <CalendarGrid
+                year={year}
+                month={month}
+                daysInMonth={daysInMonth}
+                firstDOW={firstDOW}
+                prevMonthLen={prevMonthLen}
+                todayKey={todayKey}
+                startKey={startKey}
+                endKey={endKey}
+                dateNoteKeys={dateNotes.dateNoteKeys}
+                onDayClick={selectDay}
+                onDayDoubleClick={openModal}
             />
 
           </div>
