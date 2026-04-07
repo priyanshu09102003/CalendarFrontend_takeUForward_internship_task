@@ -34,4 +34,61 @@ export function useCalendarState(){
     const goNext = useCallback(() => navigate('next'), [navigate]);
     const goPrev = useCallback(() => navigate('prev'), [navigate]);
 
+    // Date Range - Helps to set the date range and select date
+
+    const [startKey, setStartKey] = useState(null);
+    const [endKey,   setEndKey]   = useState(null);
+    
+    const selectDay = useCallback((key) => {
+        if (!startKey || (startKey && endKey)) {
+        setStartKey(key);
+        setEndKey(null);
+        return;
+        }
+        if (key === startKey) { setStartKey(null); return; }
+        const { startKey: s, endKey: e } = normaliseRange(startKey, key);
+        setStartKey(s);
+        setEndKey(e);
+    }, [startKey, endKey]);
+    
+    const clearRange = useCallback(() => { setStartKey(null); setEndKey(null); }, []);
+
+    // Month Notes - State to manage the notes section and keep the notes
+
+    const [monthNotesStore, setMonthNotesStore] = useLocalStorage('cal_month_notes', {});
+    const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+    
+    const makeDefaultNotes = () => [1,2,3,4,5,6].map((id) => ({ id, text: '', important: false, done: false }));
+    
+    const monthNotesList = monthNotesStore[monthKey] ?? makeDefaultNotes();
+    
+    const patchMonthNotes = useCallback((updater) => {
+        setMonthNotesStore((prev) => {
+        const current = prev[monthKey] ?? makeDefaultNotes();
+        return { ...prev, [monthKey]: updater(current) };
+        });
+    }, [monthKey]); 
+    
+    const updateNote = useCallback((id, text) => patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, text }: n)), [patchMonthNotes]);
+    const toggleImportant = useCallback((id)=> patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, important: !n.important } : n)), [patchMonthNotes]);
+    const toggleDone = useCallback((id)=> patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, done: !n.done }: n)), [patchMonthNotes]);
+    const addNote = useCallback(()=> patchMonthNotes((l) => [...l, { id: Date.now(), text: '', important: false, done: false }]), [patchMonthNotes]);
+    const deleteNote = useCallback((id)=> patchMonthNotes((l) => l.filter((n) => n.id !== id)), [patchMonthNotes]);
+
+
+    // Get the states for maintaining notes for each date
+
+    const [dateNotesStore, setDateNotesStore] = useLocalStorage('cal_date_notes', {});
+ 
+    const dateNoteKeys = useMemo(() => new Set(Object.keys(dateNotesStore).filter((k) => dateNotesStore[k]?.length > 0)),
+        [dateNotesStore]
+    );
+    
+    const getDateNotes = useCallback((k)=> dateNotesStore[k] ?? [], [dateNotesStore]);
+    const addDateNote = useCallback((k) => setDateNotesStore((p) => ({ ...p, [k]: [...(p[k] ?? []), { id: Date.now(), text: '', important: false, done: false }] })),[]);
+    const updateDateNote = useCallback((k, id, t) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, text: t }: n) })), []);
+    const toggleDateNoteImportant = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, important: !n.important } : n) })), []);
+    const toggleDateNoteDone = useCallback((k, id)=> setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, done: !n.done }: n) })), []);
+    const deleteDateNote = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).filter((n) => n.id !== id) })),[]);
+
 }
