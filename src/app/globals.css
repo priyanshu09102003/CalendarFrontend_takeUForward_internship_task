@@ -115,7 +115,7 @@
   background: transparent;
 }
 
-/* ─── Card + flip animation ──────────────────────────────────────────────── */
+/* ─── Card + flip animation ────────── */
 .cal-card-wrapper {
   width: 100%;
   max-width: 900px;
@@ -150,19 +150,19 @@
   100% { transform: rotateX(0deg)   scaleY(1)    translateY(0);     opacity: 1; }
 }
 
-/* ─── Navigation bar ─────────────────────────────────────────────────────── */
+/* ─── Navigation bar ────*/
 .cal-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  border: 2px solid var(--start-end-bg);
+  border-bottom: 2px solid var(--off-white);
   background-color: var(--start-end-bg);
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
 .cal-nav__logo {
-  height: 38px;
+  height: 40px;
   width: 330px;
   object-fit: cover;
 }
@@ -218,10 +218,10 @@
   animation: pageFlipIn 0.4s cubic-bezier(.4,0,.2,1) reverse forwards;
 }
 
-/* ─── Hero ───────────────────────────────────────────────────────────────── */
+/* ─── Hero ─────────── */
 .cal-hero {
   position: relative;
-  height: 360px;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -272,15 +272,15 @@
 
 .cal-hero__month {
   font-family: var(--font-display);
-  font-size: 68px;
+  font-size: 70px;
   font-weight: 900;
   line-height: 1;
   letter-spacing: 2px;
-  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  text-shadow: 0 2px 8px rgba(0,0,0,.65);
   -webkit-text-stroke: 1px rgba(255,255,255,.3);
 }
 
-/* ─── Body layout ────────────────────────────────────────────────────────── */
+/* ─── Body layout  */
 .cal-body {
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -288,7 +288,7 @@
   padding: 0;
 }
 
-/* ─── Notes panel ────────────────────────────────────────────────────────── */
+/* ─── Notes panel  */
 .notes-panel {
   padding: 5px 20px 22px 30px;
   border-right: 1px solid var(--done-color);
@@ -365,8 +365,8 @@
 
 .notes-panel__add-btn {
   margin-top: 0;
-  font-size: 10.5px;
-  color: var(--blue);
+  font-size: 15px;
+  color: var(--blue-dark);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -375,9 +375,9 @@
   font-family: var(--font-body);
   transition: opacity .15s;
 }
-.notes-panel__add-btn:hover { opacity: .7; }
+.notes-panel__add-btn:hover { opacity: .8;}
 
-/* ─── Range info ─────────────────────────────────────────────────────────── */
+/* ─── Range info ────────────────*/
 .range-info {
   background: var(--blue-light);
   border-radius: 6px;
@@ -413,7 +413,7 @@
 }
 .range-info__clear:hover { background: #f3f4f6; color: var(--text); }
 
-/* ─── Calendar grid ──────────────────────────────────────────────────────── */
+/* ─── Calendar grid */
 .cal-grid-section { padding: 20px 20px 16px; }
 
 .dow-header {
@@ -438,7 +438,7 @@
   gap: 4px;
 }
 
-/* ─── Day cell ───────────────────────────────────────────────────────────── */
+/* ─── Day cell  */
 .day-cell {
   aspect-ratio: 1;
   display: flex;
@@ -532,20 +532,20 @@
 }
 .day-cell:hover .day-cell__tooltip { display: block; }
 
-/* ─── Legend ─────────────────────────────────────────────────────────────── */
+/* ─── Legend ───────────*/
 .cal-legend {
   display: flex;
   gap: 14px;
   padding: 10px 20px 14px;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--text-muted);
   flex-wrap: wrap;
 }
 .legend-item {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 10px;
-  color: var(--text-muted);
+  font-size: 12px;
+  color: var(--text);
   font-family: var(--font-body);
 }
 .legend-item__dot {
@@ -554,12 +554,12 @@
   border-radius: 50%;
 }
 .legend-item__dot--start   { background: var(--blue); }
-.legend-item__dot--range   { background: var(--range-bg); border: 1px solid #9dd6f5; border-radius: 2px; width: 12px; height: 8px; }
+.legend-item__dot--range   { background: var(--range-bg); border: 1px solid #919ba1; border-radius: 2px; width: 12px; height: 8px; }
 .legend-item__dot--holiday { background: var(--holiday-dot); }
 .legend-item__dot--today   { background: var(--today-border); }
 .legend-item__dot--note    { background: var(--blue); opacity: .7; }
 
-/* ─── Date Note Modal ────────────────────────────────────────────────────── */
+/* ─── Date Note Modal ─── */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -676,17 +676,17 @@
   padding: 16px 0;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────── */
+/* ─── Responsiveness ─────────── */
 @media (max-width: 640px) {
   .cal-shell { padding: 16px 0 32px; }
 
   .cal-card-wrapper { max-width: 100%; border-radius: 0; }
   .cal-card { border-radius: 0; box-shadow: none; }
 
-  .cal-spiral { gap: 8px; padding: 0 10px; }
+  .cal-spiral { gap: 10px; padding: 0 10px; }
   .cal-ring   { width: 9px; height: 20px; border-width: 2px; }
 
-  .cal-hero { height: 230px; }
+  .cal-hero { height: 300px; }
   .cal-hero__month { font-size: 28px; margin-top: 2px; }
   .cal-hero__year  { font-size: 13px; letter-spacing: 2px; margin-top: -86px;}
 

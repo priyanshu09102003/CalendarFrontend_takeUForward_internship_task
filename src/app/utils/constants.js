@@ -16,7 +16,7 @@ export const HOLIDAYS = {
   '2026-05-10': "Mother's Day",
   '2026-05-25': 'Memorial Day',
   '2026-06-21': "Father's Day",
-  '2026-07-04': 'Independence Day',
+  '2026-08-15': 'Independence Day',
   '2026-09-07': 'Labor Day',
   '2026-10-12': 'Columbus Day',
   '2026-10-31': 'Halloween',

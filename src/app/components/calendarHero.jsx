@@ -30,13 +30,21 @@ export default function CalendarHero({ year, month }) {
         aria-hidden="true"
       >
 
-        {/* Blue wave */}
+        {/* Thin white wave */}
+
         <path
-          d="M0 80 L0 40 Q220 0 450 28 Q680 56 900 18 L900 80 Z"
-          fill="#1a9ed9"
+          d="M0 80 L0 34 Q220 0 450 28 Q680 56 900 18 L900 80 Z"
+          fill="white"
         />
 
-        {/* White wave layered above */}
+        {/* Blue wave */}
+        
+        <path
+          d="M0 80 L0 40 Q220 0 450 28 Q680 56 900 18 L900 80 Z"
+          fill="#4a9ae4"
+        />
+
+        {/* White above */}
         <path
           d="M0 80 L0 56 Q200 26 390 46 Q580 66 900 36 L900 80 Z"
           fill="white"

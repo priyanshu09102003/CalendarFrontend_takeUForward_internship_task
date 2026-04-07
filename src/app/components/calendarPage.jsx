@@ -8,6 +8,7 @@ import CalendarNav  from './calendarNav';
 import CalendarHero from './calendarHero';
 import NotesPanel from './notesPanel';
 import CalendarGrid from './calendarGrid';
+import CalendarLegend from './calendarLegend';
 
 
 export default function CalendarPage() {
@@ -90,6 +91,11 @@ export default function CalendarPage() {
             />
 
           </div>
+
+          {/* CalendarLegend for better UX  */}
+          <CalendarLegend />
+
+          {/* ADDITIONAL - Adding modal that will open on double click to set notes/events for each day */}
         </div>
       </div>
 
