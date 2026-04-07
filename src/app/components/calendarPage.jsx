@@ -6,12 +6,22 @@ import '../globals.css';
 import { useCalendarState } from '../hooks/useCalendarState';
 import CalendarNav  from './calendarNav';
 import CalendarHero from './calendarHero';
+import NotesPanel from './notesPanel';
 
 
 export default function CalendarPage() {
-  const { navigation, animation } = useCalendarState();
-  const { year, month, goNext, goPrev } = navigation;  
-  const { isFlipping, flipDir } = animation;
+  const { navigation,
+        animation, 
+        range,     
+        monthNotes,
+        dateNotes,
+        computed,
+    } = useCalendarState();
+
+
+    const { year, month, goNext, goPrev } = navigation;  
+    const { isFlipping, flipDir } = animation;
+    const { startKey, endKey, selectDay, clearRange } = range;
 
     const flipClass = isFlipping ? `flip-out-${flipDir}` : '';
     const cardClass = ['cal-card'].join(' ');
@@ -40,6 +50,23 @@ export default function CalendarPage() {
         <CalendarNav year={year} onPrev={goPrev} onNext={goNext} />
         <div className={cardClass} role="main" aria-label="Wall calendar">
           <CalendarHero year={year} month={month} />
+
+          <div className="cal-body">
+
+            {/* Side panel to take and mark notes */}
+            <NotesPanel
+                notes={monthNotes.list}
+                onUpdate={monthNotes.updateNote}
+                onToggleImportant={monthNotes.toggleImportant}
+                onToggleDone={monthNotes.toggleDone}
+                onAdd={monthNotes.addNote}
+                onDelete={monthNotes.deleteNote}
+                startKey={startKey}
+                endKey={endKey}
+                onClearRange={clearRange}
+            />
+
+          </div>
         </div>
       </div>
 

@@ -57,7 +57,7 @@ export function useCalendarState(){
     const [monthNotesStore, setMonthNotesStore] = useLocalStorage('cal_month_notes', {});
     const monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
     
-    const makeDefaultNotes = () => [1,2,3,4,5,6].map((id) => ({ id, text: '', important: false, done: false }));
+    const makeDefaultNotes = () => [1,2,3,4,5].map((id) => ({ id, text: '', important: false, done: false }));
     
     const monthNotesList = monthNotesStore[monthKey] ?? makeDefaultNotes();
     
