@@ -678,10 +678,10 @@
 
 /* ─── Responsiveness ─────────── */
 @media (max-width: 640px) {
-  .cal-shell { padding: 16px 0 32px; }
+  .cal-shell { padding: 16px 12px 32px; }
 
-  .cal-card-wrapper { max-width: 100%; border-radius: 0; }
-  .cal-card { border-radius: 0; box-shadow: none; }
+  .cal-card-wrapper { max-width: 100%; border-radius: 6px; margin: 0 4px; }
+  .cal-card { border-radius: 0 0 6px 6px; box-shadow: none; }
 
   .cal-spiral { gap: 10px; padding: 0 10px; }
   .cal-ring   { width: 9px; height: 20px; border-width: 2px; }
