@@ -70,9 +70,13 @@ export function useCalendarState(){
     }, [monthKey]); 
     
     const updateNote = useCallback((id, text) => patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, text }: n)), [patchMonthNotes]);
+
     const toggleImportant = useCallback((id)=> patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, important: !n.important } : n)), [patchMonthNotes]);
+
     const toggleDone = useCallback((id)=> patchMonthNotes((l) => l.map((n) => n.id === id ? { ...n, done: !n.done }: n)), [patchMonthNotes]);
+
     const addNote = useCallback(()=> patchMonthNotes((l) => [...l, { id: Date.now(), text: '', important: false, done: false }]), [patchMonthNotes]);
+    
     const deleteNote = useCallback((id)=> patchMonthNotes((l) => l.filter((n) => n.id !== id)), [patchMonthNotes]);
 
 
@@ -85,10 +89,19 @@ export function useCalendarState(){
     );
     
     const getDateNotes = useCallback((k)=> dateNotesStore[k] ?? [], [dateNotesStore]);
-    const addDateNote = useCallback((k) => setDateNotesStore((p) => ({ ...p, [k]: [...(p[k] ?? []), { id: Date.now(), text: '', important: false, done: false }] })),[]);
+    
+    const addDateNote = useCallback((k) => setDateNotesStore((p) => ({ ...p, [k]: [...(p[k] ?? []), { id: Date.now(), text: '', important: false, done: false }] })),[setDateNotesStore]);
+
+
     const updateDateNote = useCallback((k, id, t) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, text: t }: n) })), []);
+
+
     const toggleDateNoteImportant = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, important: !n.important } : n) })), []);
+
+
     const toggleDateNoteDone = useCallback((k, id)=> setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, done: !n.done }: n) })), []);
+
+
     const deleteDateNote = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).filter((n) => n.id !== id) })),[]);
 
 
