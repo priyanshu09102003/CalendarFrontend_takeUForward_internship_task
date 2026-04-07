@@ -42,4 +42,10 @@ export const MONTH_IMAGES = [
   'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=1200&q=80', // Dec – snow
 ];
 
-export const RING_COUNT = 24;
+export function getRingCount() {
+  if (typeof window === 'undefined') return 18;
+  const w = window.innerWidth;
+  if (w >= 1024) return 38;
+  if (w >= 640)  return 26;
+  return 16;
+}
