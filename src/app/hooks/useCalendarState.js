@@ -91,4 +91,21 @@ export function useCalendarState(){
     const toggleDateNoteDone = useCallback((k, id)=> setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).map((n) => n.id === id ? { ...n, done: !n.done }: n) })), []);
     const deleteDateNote = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).filter((n) => n.id !== id) })),[]);
 
+
+    // Computing the days 
+
+    const daysInMonth = getDaysInMonth(year, month);
+    const firstDOW = getFirstDOW(year, month);
+    const prevMonthLen = getDaysInMonth(year, month === 0 ? 11 : month - 1);
+    
+    return {
+        navigation: { year, month, goNext, goPrev },
+        range:      { startKey, endKey, selectDay, clearRange },
+        monthNotes: { list: monthNotesList, updateNote, toggleImportant, toggleDone, addNote, deleteNote },
+        dateNotes:  { getDateNotes, addDateNote, updateDateNote, toggleDateNoteImportant, toggleDateNoteDone, deleteDateNote, dateNoteKeys },
+        computed:   { todayKey: todayKey(), daysInMonth, firstDOW, prevMonthLen },
+        animation:  { flipDir, isFlipping },
+    };
+
 }
+
