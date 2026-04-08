@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Replace with your actual logo path -->
-<img src="public/tuf_logo.png" alt="TakeUforward Logo" height="56" />
+<img src="public/tuf_logo.png" alt="TakeUforward Logo" height="56" width="44" />
 
 # Wall Calendar 2026 — Interactive Web App
 
@@ -116,7 +116,7 @@ The single source of truth for all calendar state. Manages:
 - **Computed values** — `daysInMonth`, `firstDOW`, `prevMonthLen`, `todayKey`
 
 ### `useLocalStorage.js`
-A drop-in replacement for `useState` that persists state to `localStorage`. Handles SSR safety (`typeof window === 'undefined'`), JSON parse/stringify, quota exceeded and other write errors with `console.warn`, cross-tab sync via the `storage` event listener, and exposes a `remove()` utility to wipe a key and reset to `initialVal`.
+A drop-in replacement for `useState` that persists state to `localStorage`. Handles persistance successfully as we not using any external database.
 
 ---
 
@@ -124,7 +124,7 @@ A drop-in replacement for `useState` that persists state to `localStorage`. Hand
 
 | Layer | Choice |
 |---|---|
-| Framework | Next.js 15 (App Router) |
+| Framework | Next.js 16 (App Router) |
 | Language | JavaScript (JSX) |
 | Styling | Plain CSS with custom properties |
 | Fonts | Playfair Display + DM Sans via Google Fonts |
