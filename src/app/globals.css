@@ -636,6 +636,7 @@
   padding: 10px 20px 14px;
   border-top: 1px solid var(--text-muted);
   flex-wrap: wrap;
+  background-color: var(--blue-mid);
 }
 .legend-item {
   display: flex;
