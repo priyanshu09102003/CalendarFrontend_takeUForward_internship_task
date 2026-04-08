@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Replace with your actual logo path -->
-<img src="public/header-image.png" alt="TakeUforward Logo" height="250" />
+<img src="public/tuf_logo.png" alt="TakeUforward Logo" height="250" />
 
 # Wall Calendar 2026 — Interactive Calendar Frontend
 
@@ -12,7 +12,7 @@
 ---
 
 <!-- Replace the path below with your actual screenshot or demo GIF -->
-![Calendar Preview](public/screenshots/preview.png)
+![Calendar Preview](public/header-image.png)
 
 ---
 
