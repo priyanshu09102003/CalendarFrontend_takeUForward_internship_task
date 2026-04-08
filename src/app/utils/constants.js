@@ -28,18 +28,28 @@ export const HOLIDAYS = {
 
 // One curated Unsplash image per month
 export const MONTH_IMAGES = [
-  'https://images.unsplash.com/photo-1551524164-687a55dd1126?w=1200&q=80', // Jan – winter
-  'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=1200&q=80', // Feb – aurora
-  'https://images.unsplash.com/photo-1490750967868-88df5691cc40?w=1200&q=80', // Mar – blossom
-  'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&q=80', // Apr – stars
-  'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80', // May – forest
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80', // Jun – mountain lake
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80', // Jul – beach
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80', // Aug – night sky
-  'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80', // Sep – lake misty
-  'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1200&q=80', // Oct – autumn
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80', // Nov – foggy
-  'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=1200&q=80', // Dec – snow
+  'https://images.unsplash.com/photo-1518873890627-d4b177c06e51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2ludGVyJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww', // Jan 
+  'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=1200&q=80', // Feb
+
+  'https://images.unsplash.com/photo-1620065487644-1080510335f5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3VtbWVyJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww', // Mar 
+
+  'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&q=80', // Apr
+
+  'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=80', // May
+
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80', // Jun
+
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80', // Jul
+
+  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80', // Aug 
+
+  'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80', // Sep
+
+  'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1200&q=80', // Oct
+
+  'https://images.unsplash.com/photo-1508766505-ff8c5c590939?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXV0dW1uJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww', // Nov
+
+  'https://images.unsplash.com/photo-1481603707406-47fe6021a1c0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdpbnRlciUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D', // Dec
 ];
 
 export function getRingCount() {
