@@ -1,9 +1,9 @@
 <div align="center">
 
 <!-- Replace with your actual logo path -->
-<img src="public/tuf_logo.png" alt="TakeUforward Logo" height="56" width="44" />
+<img src="public/tuf_logo.png" alt="TakeUforward Logo" height="250" />
 
-# Wall Calendar 2026 — Interactive Web App
+# Wall Calendar 2026 — Interactive Calendar Frontend
 
 *Frontend Engineering Challenge — TakeUforward Internship Task*
 
