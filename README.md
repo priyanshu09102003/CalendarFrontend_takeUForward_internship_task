@@ -130,7 +130,7 @@ A drop-in replacement for `useState` that persists state to `localStorage`. Hand
 
 ## Responsive Design
 
-![Fully Responsive](public/screenshots/responsive.png)
+![Fully Responsive](public/responsive.png)
 
 The component is built using a mobile-first approach and special care has been taken in making it responsive across different types of devices. The responsiveness is handled using custom css classes that are created in the `globals.css`, which handles the size and positioning of different components in the calendar across different devices
 
