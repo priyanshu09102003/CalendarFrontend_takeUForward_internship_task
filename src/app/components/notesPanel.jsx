@@ -1,6 +1,6 @@
-import React from 'react';
-import RangeInfo from './rangeInfo';
-
+import React, { useState, useCallback } from 'react';
+import RangeInfo   from './rangeInfo';
+import RangePicker from './rangePicker';
 
 export default function NotesPanel({
   notes,
@@ -12,10 +12,42 @@ export default function NotesPanel({
   startKey,
   endKey,
   onClearRange,
+  onRangeSelect,   
+  year,            
+  month,           
+  daysInMonth,     
 }) {
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const togglePicker = useCallback(() => setPickerOpen((v) => !v), []);
+  const closePicker  = useCallback(() => setPickerOpen(false), []);
+
   return (
     <aside className="notes-panel" aria-label="Monthly notes">
-      <p className="notes-panel__heading">Notes</p>
+
+      {/* Heading row with three-dot button */}
+      <div className="notes-panel__header">
+        <p className="notes-panel__heading">Notes</p>
+        <div className="notes-panel__header-actions">
+          <button
+            className="notes-panel__dots-btn"
+            onClick={togglePicker}
+            aria-label="Select date range"
+            title="Select date range"
+          >
+            ···
+          </button>
+          {/* RangePicker popover */}
+          {pickerOpen && (
+            <RangePicker
+              year={year}
+              month={month}
+              daysInMonth={daysInMonth}
+              onSelect={onRangeSelect}
+              onClose={closePicker}
+            />
+          )}
+        </div>
+      </div>
 
       <ul className="notes-panel__list" role="list">
         {notes.map((note) => (
@@ -34,29 +66,21 @@ export default function NotesPanel({
         + Add note
       </button>
 
-      {/* Range summary */}
       <RangeInfo startKey={startKey} endKey={endKey} onClear={onClearRange} />
     </aside>
   );
 }
-
-// ── NoteItem 
 
 function NoteItem({ note, onUpdate, onToggleImportant, onToggleDone, onDelete }) {
   const itemClasses = [
     'note-item',
     note.important && 'is-important',
     note.done      && 'is-done',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  ].filter(Boolean).join(' ');
 
   return (
     <li className={itemClasses} role="listitem">
-      {/* Coloured status dot */}
       <span className="note-item__dot" aria-hidden="true" />
-
-      {/* Editable text */}
       <input
         className="note-item__input"
         type="text"
@@ -65,35 +89,22 @@ function NoteItem({ note, onUpdate, onToggleImportant, onToggleDone, onDelete })
         onChange={(e) => onUpdate(note.id, e.target.value)}
         aria-label="Note text"
       />
-
-      {/* Action buttons */}
       <div className="note-item__actions" role="group" aria-label="Note actions">
         <button
           className={`note-item__action-btn${note.important ? ' is-important' : ''}`}
           onClick={() => onToggleImportant(note.id)}
           title={note.important ? 'Remove important' : 'Mark important'}
-          aria-label={note.important ? 'Remove important' : 'Mark important'}
-        >
-          ★
-        </button>
-
+        >★</button>
         <button
           className={`note-item__action-btn${note.done ? ' is-done' : ''}`}
           onClick={() => onToggleDone(note.id)}
           title={note.done ? 'Mark undone' : 'Mark done'}
-          aria-label={note.done ? 'Mark undone' : 'Mark done'}
-        >
-          ✓
-        </button>
-
+        >✓</button>
         <button
           className="note-item__action-btn del"
           onClick={() => onDelete(note.id)}
           title="Delete note"
-          aria-label="Delete note"
-        >
-          ✕
-        </button>
+        >✕</button>
       </div>
     </li>
   );

@@ -104,6 +104,12 @@ export function useCalendarState(){
     const deleteDateNote = useCallback((k, id) => setDateNotesStore((p) => ({ ...p, [k]: (p[k] ?? []).filter((n) => n.id !== id) })),[]);
 
 
+    const setRange = useCallback((s, e) => {
+        setStartKey(s);
+        setEndKey(e);
+    }, []);
+
+
     // Computing the days 
 
     const daysInMonth = getDaysInMonth(year, month);
@@ -112,11 +118,12 @@ export function useCalendarState(){
     
     return {
         navigation: { year, month, goNext, goPrev },
-        range:      { startKey, endKey, selectDay, clearRange },
+        range:      { startKey, endKey, selectDay, clearRange, setRange },
         monthNotes: { list: monthNotesList, updateNote, toggleImportant, toggleDone, addNote, deleteNote },
         dateNotes:  { getDateNotes, addDateNote, updateDateNote, toggleDateNoteImportant, toggleDateNoteDone, deleteDateNote, dateNoteKeys },
         computed:   { todayKey: todayKey(), daysInMonth, firstDOW, prevMonthLen },
         animation:  { flipDir, isFlipping },
+
     };
 
 }

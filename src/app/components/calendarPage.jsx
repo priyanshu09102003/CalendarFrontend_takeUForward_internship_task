@@ -74,6 +74,10 @@ export default function CalendarPage() {
                 startKey={startKey}
                 endKey={endKey}
                 onClearRange={clearRange}
+                onRangeSelect={range.setRange}   
+                year={year}                       
+                month={month}                     
+                daysInMonth={daysInMonth} 
             />
 
             {/* Main body of the calendar to show the grid of dates and handle their states */}
@@ -96,7 +100,7 @@ export default function CalendarPage() {
           {/* CalendarLegend for better UX  */}
           <CalendarLegend />
 
-          {/* ADDITIONAL - Adding modal that will open on double click to set notes/events for each day */}
+          {/* ADDITIONAL FEATURE - Adding modal that will open on double click to set notes/events for each day */}
 
            {modalDateKey && (
             <DateNoteModal
