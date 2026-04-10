@@ -3,7 +3,7 @@
 <!-- Replace with your actual logo path -->
 <img src="public/tuf_logo.png" alt="TakeUforward Logo" height="250" />
 
-# Wall Calendar 2026 — Interactive Calendar Frontend
+# Wall Calendar Component 2026 — Interactive Calendar Frontend
 
 *Frontend Engineering Challenge — TakeUforward Internship Task*
 
